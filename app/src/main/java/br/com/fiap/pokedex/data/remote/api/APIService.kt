@@ -3,6 +3,7 @@ package br.com.fiap.pokedex.data.remote.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 object APIService {
 
     private var INSTANCE: PokemonService? = null
@@ -16,8 +17,7 @@ object APIService {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 
-                INSTANCE = retrofit.create(
-                    PokemonService::class.java)
+                INSTANCE = retrofit.create(PokemonService::class.java)
             }
 
             return INSTANCE

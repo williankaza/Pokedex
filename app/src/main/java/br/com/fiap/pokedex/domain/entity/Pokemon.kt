@@ -1,6 +1,8 @@
 package br.com.fiap.pokedex.domain.entity
 
+import com.google.gson.annotations.SerializedName
+
 data class Pokemon(
-    val nome: String,
-    val urlImage: String
+    @SerializedName("") val nome: String,
+    val urlImagem: String
 )

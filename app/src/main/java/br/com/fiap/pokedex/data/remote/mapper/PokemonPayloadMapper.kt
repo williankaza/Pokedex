@@ -5,9 +5,9 @@ import br.com.fiap.pokedex.domain.entity.Pokemon
 
 object PokemonPayloadMapper {
 
-    fun map(pokemons: List<PokemonPayload>) = pokemons.map{ map(it) }
+    fun map(pokemons: List<PokemonPayload>) = pokemons.map { map(it) }
 
-    fun map(pokemon: PokemonPayload ) = Pokemon(
+    fun map(pokemon: PokemonPayload) = Pokemon(
         pokemon.nome,
         pokemon.sprites.other.oficialArtWork.frontDefault
     )

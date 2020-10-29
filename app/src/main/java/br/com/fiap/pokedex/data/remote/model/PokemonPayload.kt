@@ -9,18 +9,19 @@ data class PokemonPayload(
 
 data class Sprites(
     @SerializedName("front_default") val frontDefault: String,
-    val other: SpriteOther
+    val other: SpritesOther
 )
 
-data class SpriteOther(
-    @SerializedName("dream_world")  val dreamWorld: SpriteOtherDreamWorld,
-    @SerializedName("official_artwork") val oficialArtWork: SpriteOficialArtWork
+data class SpritesOther(
+    @SerializedName("dream_world") val dreamWorld: SpritesOtherDreamWorld,
+    @SerializedName("official-artwork") val oficialArtWork: SpritesOficialArtWork
 )
 
-data class SpriteOtherDreamWorld(
+data class SpritesOtherDreamWorld(
     @SerializedName("front_default") val frontDefault: String
 )
 
-data class SpriteOficialArtWork(
+data class SpritesOficialArtWork(
     @SerializedName("front_default") val frontDefault: String
 )
+

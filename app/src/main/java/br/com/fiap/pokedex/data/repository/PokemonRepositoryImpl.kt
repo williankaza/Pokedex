@@ -10,30 +10,34 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PokemonRepositoryImpl (
-    val pokemonService: PokemonService
+class PokemonRepositoryImpl(
+    val pokemonService: PokemonService?
 ) : PokemonRepository {
-    override fun pesquisar(id: String,
-    onComplete: (Pokemon) -> Unit,
-    onError: (Throwable) -> Unit) {
+
+    override fun pesquisar(
+        id: String,
+        onComplete: (Pokemon?) -> Unit,
+        onError: (Throwable) -> Unit
+    ) {
         pokemonService
             ?.pesquisar(id)
-            ?.enqueue(object : Callback<PokemonPayload>{
+            ?.enqueue(object : Callback<PokemonPayload> {
                 override fun onResponse(
                     call: Call<PokemonPayload>,
                     response: Response<PokemonPayload>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         val pokemonPayload = response.body()
-                        if (pokemonPayload == null){
-                            onError(Throwable("Pokemon nao encontrado!"))
+                        if (pokemonPayload == null) {
+                            onError(Throwable("Pokémon não encontrado"))
                         } else {
                             onComplete(PokemonPayloadMapper.map(pokemonPayload))
                         }
                     } else {
-                        onError(Throwable("Pokemon nao encontrado!"))
+                        onError(Throwable("Pokémon não encontrado"))
                     }
                 }
+
                 override fun onFailure(call: Call<PokemonPayload>, t: Throwable) {
                     onError(t)
                 }
